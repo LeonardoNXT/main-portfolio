@@ -1,11 +1,16 @@
 import Iridescence from "./background";
-import { useRef } from "react";
+import { RefObject, useEffect, useRef } from "react";
 import Image from "next/image";
 import useHeroSectionAnimation from "./hooks/useHeroSectionAnimation";
+import Lenis from "lenis";
 
-export default function HeroSectionComponent() {
+type HeroSectionProps = {
+  lenis: RefObject<Lenis | null>;
+};
+
+export default function HeroSectionComponent({ lenis }: HeroSectionProps) {
   const contextRef = useRef<HTMLDivElement | null>(null);
-  useHeroSectionAnimation(contextRef);
+  useHeroSectionAnimation(contextRef, lenis);
   return (
     <div
       className="w-full h-screen relative saturate-0 overflow-hidden"
@@ -21,7 +26,7 @@ export default function HeroSectionComponent() {
         />
         <div className="w-full h-1/2 bg-[#000000] part-top-init"></div>
         <div className="w-full h-1/2 bg-[#000000] part-down-init"></div>
-        <p className="invert-100 absolute top-1/2 left-1/2 translate-[-50%] text-[40px] text-[#333] title-dev opacity-0">
+        <p className="invert-100 absolute top-1/2 left-1/2 translate-[-50%] text-nowrap text-[30px] md:text-[40px] text-[#333] title-dev opacity-0">
           Full Stack Developer
         </p>
       </div>

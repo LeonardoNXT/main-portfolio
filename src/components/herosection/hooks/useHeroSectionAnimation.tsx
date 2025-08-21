@@ -2,6 +2,7 @@ import SplitType from "split-type";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { RefObject } from "react";
+import Lenis from "lenis";
 
 const defaultHeroSectionConfig = {
   logo: {
@@ -60,6 +61,7 @@ const defaultHeroSectionConfig = {
 
 export default function useHeroSectionAnimation(
   contextRef: RefObject<HTMLDivElement | null>,
+  lenisRef: RefObject<Lenis | null>,
   config = defaultHeroSectionConfig
 ) {
   useGSAP(
@@ -69,6 +71,8 @@ export default function useHeroSectionAnimation(
         const nameElementSplited = new SplitType(nameElement).chars;
 
         const tl = gsap.timeline();
+        const lenis = lenisRef?.current;
+        lenis?.stop();
 
         context.add(() => {
           tl.to(".logo-leonardo", {
@@ -137,6 +141,9 @@ export default function useHeroSectionAnimation(
               nameElementSplited,
               {
                 ...config.nameSplited.to,
+                onComplete: () => {
+                  lenis?.start();
+                },
               },
               "<"
             );
