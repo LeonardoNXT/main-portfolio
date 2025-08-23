@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         grifinito: ["var(--font-grifinito)"],
+        canopee: ["var(--font-canopee)"],
       },
     },
   },

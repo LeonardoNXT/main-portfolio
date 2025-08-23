@@ -12,6 +12,13 @@
   font-style: normal;
   font-display: swap;
 }
+@font-face {
+  font-family: "Canopee";
+  src: url("/fonts/Canopee.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 @theme inline {
   --color-background: var(--background);
@@ -22,6 +29,7 @@
 
 @theme {
   --font-grifinito: "Grifinito", sans-serif;
+  --font-canopee: "Canopee", sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
