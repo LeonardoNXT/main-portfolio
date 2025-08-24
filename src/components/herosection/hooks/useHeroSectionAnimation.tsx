@@ -115,6 +115,7 @@ export default function useHeroSectionAnimation(
 ) {
   useGSAP(
     (context) => {
+      ScrollTrigger.refresh();
       const nameElement = context?.selector?.(".name");
       if (nameElement) {
         const nameElementSplited = new SplitType(nameElement).chars as

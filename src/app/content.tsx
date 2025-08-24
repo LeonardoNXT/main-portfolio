@@ -19,7 +19,7 @@ export default function HomeContent() {
 
   return (
     <main className="relative w-full h-auto">
-      <div className="sticky w-full h-full top-0 left-0 z-10 pointer-events-none">
+      <div className="sticky w-full h-full top-0 left-0  z-20 pointer-events-none">
         <div className="absoulute w-full h-full top-0 left-0">
           <Noise
             patternSize={250}
