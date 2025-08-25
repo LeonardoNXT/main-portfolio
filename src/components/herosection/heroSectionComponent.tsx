@@ -1,5 +1,5 @@
 import Iridescence from "./background";
-import { RefObject, useEffect, useRef } from "react";
+import { RefObject, useRef } from "react";
 import Image from "next/image";
 import useHeroSectionAnimation from "./hooks/useHeroSectionAnimation";
 import Lenis from "lenis";
