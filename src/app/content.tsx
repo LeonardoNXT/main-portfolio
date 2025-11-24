@@ -13,6 +13,7 @@ export default function HomeContent() {
   );
   const lenis = useLenis(0.05);
   const LightRaysRef = useRef<HTMLDivElement | null>(null);
+  const NoiseRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     setLenisHook(lenis);
   }, [lenis]);
@@ -20,7 +21,7 @@ export default function HomeContent() {
   return (
     <main className="relative w-full h-auto">
       <div className="sticky w-full h-full top-0 left-0  z-20 pointer-events-none">
-        <div className="absoulute w-full h-full top-0 left-0">
+        <div className="absoulute w-full h-full top-0 left-0" ref={NoiseRef}>
           <Noise
             patternSize={250}
             patternScaleX={1}
@@ -48,7 +49,7 @@ export default function HomeContent() {
         </div>
       </div>
       {lenisHook && <HeroSectionComponent lenis={lenisHook} />}
-      <AboutSectionComponent LightRaysRef={LightRaysRef} />
+      <AboutSectionComponent LightRaysRef={LightRaysRef} NoiseRef={NoiseRef} />
     </main>
   );
 }

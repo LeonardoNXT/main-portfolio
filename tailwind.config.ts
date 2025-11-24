@@ -6,6 +6,8 @@ module.exports = {
       fontFamily: {
         grifinito: ["var(--font-grifinito)"],
         canopee: ["var(--font-canopee)"],
+        aeonik: ["var(--font-aeonik)"],
+        necosmic: ["var(--font-necosmic)"]
       },
     },
   },

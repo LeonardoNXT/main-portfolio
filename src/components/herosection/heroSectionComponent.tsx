@@ -42,8 +42,8 @@ export default function HeroSectionComponent({ lenis }: HeroSectionProps) {
             />
             <div className="w-full h-1/2 bg-[#000000] part-top-init"></div>
             <div className="w-full h-1/2 bg-[#000000] part-down-init"></div>
-            <p className="invert-100 absolute top-1/2 left-1/2 translate-[-50%] text-nowrap text-[30px] md:text-[40px] text-[#333] title-dev opacity-0">
-              Desenvolvedor Full Stack
+            <p className="invert-100 absolute top-1/2 left-1/2 translate-[-50%] font-necosmic text-nowrap text-[30px] md:text-[40px] text-[#333] title-dev opacity-0">
+              FullStack Developer
             </p>
             <div className="w-full h-screen absolute top-0 left-0 flex justify-center items-center"></div>
           </div>
