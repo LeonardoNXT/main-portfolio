@@ -107,9 +107,9 @@ export default function Scene({
       <color attach="background" args={["#ffffff"]} />
 
       <Environment
-        files="/panoramic.hdr"
+        files="/panoramic.jpg"
         background={false}
-        environmentIntensity={1}
+        environmentIntensity={1.5}
       />
 
       <EffectComposer multisampling={isMobile ? 0 : 4}>
