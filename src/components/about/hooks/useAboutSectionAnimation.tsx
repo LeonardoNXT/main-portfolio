@@ -281,6 +281,8 @@ export default function useAboutSectionAnimation(
           },
         });
 
+        // FIM do aboutPartTWO
+
         gsap.to(".line-4", {
           translateY: 0,
           stagger: 0.05,
@@ -292,8 +294,6 @@ export default function useAboutSectionAnimation(
           },
         });
       });
-
-      // FIM do aboutPartTWO
     },
     { scope: contextRef }
   );

@@ -13,6 +13,7 @@ import {
 import { BlendFunction } from "postprocessing";
 import { ToneMappingMode } from "postprocessing";
 import { Vignette } from "@react-three/postprocessing";
+import SplitType from "split-type";
 
 export default function Scene({
   refSection,
@@ -22,6 +23,7 @@ export default function Scene({
   // 10 0 10
   const cameraPosition = useRef({ x: -20, y: 5, z: 2 });
   const cameraLookAt = useRef({ x: 0, y: 10, z: 0 });
+  const bgColor = useRef<THREE.Color | null>(null);
   const heightScreen = window.innerHeight;
   const [isMobile, setIsMobile] = useState<boolean>(false);
 
@@ -59,6 +61,7 @@ export default function Scene({
             scrub: true,
           },
         });
+
         tl.to(
           cameraPosition.current,
           {
@@ -78,6 +81,52 @@ export default function Scene({
           },
           0
         );
+
+        const textIntroduction = new SplitType(".text-introdution").chars;
+
+        if (!textIntroduction) return;
+
+        textIntroduction.forEach((char) => {
+          // pega o texto do span original
+          const charContent = char.textContent;
+
+          // substitui pelo novo span interno
+          char.innerHTML = `<p class="inner-char">${charContent}</p>`;
+        });
+
+        gsap.set(textIntroduction, {
+          opacity: 1,
+        });
+
+        gsap.to(".title-introduction", {
+          opacity: 1,
+          scrollTrigger: {
+            trigger: ".mid-about-1",
+            start: `${heightScreen * 4} bottom`,
+            end: `${heightScreen * 4.5} bottom`,
+            scrub: true,
+          },
+        });
+
+        gsap.to(".inner-char", {
+          translateX: 0,
+          stagger: 0.5,
+          scrollTrigger: {
+            trigger: ".mid-about-1",
+            start: `${heightScreen * 4} bottom`,
+            end: `${heightScreen * 4.5} bottom`,
+            scrub: true,
+          },
+        });
+      });
+      gsap.to(".content-introduction", {
+        opacity: 0,
+        scrollTrigger: {
+          trigger: ".mid-about-1",
+          start: `${heightScreen * 6.5} bottom`,
+          end: `${heightScreen * 7} bottom`,
+          scrub: true,
+        },
       });
     },
     { scope: refSection }
@@ -104,15 +153,15 @@ export default function Scene({
         cameraLookAt={cameraLookAt}
         isMobile={isMobile}
       />
-      <color attach="background" args={["#ffffff"]} />
+      <color attach="background" args={["#ffffff"]} ref={bgColor} />
 
       <Environment
         files="/panoramic.jpg"
         background={false}
-        environmentIntensity={1.5}
+        environmentIntensity={1.8}
       />
 
-      <EffectComposer multisampling={isMobile ? 0 : 4}>
+      <EffectComposer multisampling={isMobile ? 0 : 2}>
         <ToneMapping mode={ToneMappingMode.ACES_FILMIC} />
         {
           (!isMobile && (

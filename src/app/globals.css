@@ -124,4 +124,13 @@ body {
 }
 .focus .char {
   transform: translateY(100%);
+  overflow: hidden;
+}
+
+.text-introdution .char {
+  position: relative;
+  overflow: hidden;
+}
+.inner-char {
+  transform: translateX(-100%);
 }
