@@ -5,10 +5,12 @@ import EnergyModel from "./energyModel";
 type CameraRef = RefObject<{ x: number; y: number; z: number }>;
 
 export default function SceneContent({
+  isVisibleFirsh,
   cameraPosition,
   cameraLookAt,
   isMobile,
 }: {
+  isVisibleFirsh: boolean;
   cameraPosition: CameraRef;
   cameraLookAt: CameraRef;
   isMobile: boolean;
@@ -71,7 +73,9 @@ export default function SceneContent({
       {/* Luz ambiente */}
       <ambientLight intensity={0.3} />
 
-      <EnergyModel />
+      <group visible={isVisibleFirsh}>
+        <EnergyModel />
+      </group>
     </>
   );
 }
