@@ -1,16 +1,10 @@
 import { Canvas } from "@react-three/fiber";
-import { JSX, RefObject, useRef } from "react";
+import { RefObject, useRef } from "react";
 import SceneContent from "./sceneContent";
 import { Environment } from "@react-three/drei";
 import * as THREE from "three";
-import {
-  EffectComposer,
-  Noise,
-  ToneMapping,
-} from "@react-three/postprocessing";
-import { BlendFunction } from "postprocessing";
+import { EffectComposer, ToneMapping } from "@react-three/postprocessing";
 import { ToneMappingMode } from "postprocessing";
-import { Vignette } from "@react-three/postprocessing";
 import useAnimation from "./hooks/useAnimation";
 import useResize from "./hooks/useResize";
 import useVisibility from "./hooks/useVisibility";
@@ -75,24 +69,6 @@ export default function Scene({
 
       <EffectComposer multisampling={0}>
         <ToneMapping mode={ToneMappingMode.ACES_FILMIC} />
-        {
-          (!isMobile && (
-            <Noise
-              opacity={0.6}
-              blendFunction={BlendFunction.DARKEN}
-              premultiply
-            />
-          )) as JSX.Element
-        }
-        {
-          (!isMobile && (
-            <Vignette
-              eskil={false}
-              offset={0.3} // intensidade do escurecimento nas bordas
-              darkness={0.7} // quão escuro fica
-            />
-          )) as JSX.Element
-        }
       </EffectComposer>
     </Canvas>
   );

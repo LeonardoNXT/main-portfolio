@@ -16,9 +16,6 @@ export default function useVisibility(config: Config) {
       const visibility =
         (pagina.getBoundingClientRect().y - window.innerHeight) * -1;
 
-      console.log(visibility);
-
-      console.log(visibility >= config.heightScreen * 5);
       if (visibility >= config.heightScreen * 6.5) {
         if (!isVisibleFirsh) return;
         setIsVisibleFirsh(false);

@@ -1,7 +1,24 @@
-export default function AboutPartTwo() {
+import { Dispatch, SetStateAction, useRef } from "react";
+import useNoise from "../hooks/useNoise";
+
+export default function AboutPartTwo({
+  setNoiseIsActive,
+}: {
+  setNoiseIsActive: Dispatch<SetStateAction<boolean>>;
+}) {
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  useNoise({
+    setState: setNoiseIsActive,
+    trigger: ref,
+  });
+
   return (
     <div className="relative">
-      <div className="w-full h-[580vh] font-aeonik  flex-col bg-[#000] relative init-about">
+      <div
+        className="w-full h-[580vh] font-aeonik  flex-col bg-[#000] relative init-about"
+        ref={ref}
+      >
         <div className="w-screen sticky flex justify-center items-center h-screen top-0">
           <div className="w-full h-full  grid grid-cols-20 overflow-hidden pointer-events-none">
             {[...Array(20)].map((_, i) => (

@@ -3,6 +3,7 @@ import { RefObject, useRef } from "react";
 import Image from "next/image";
 import useHeroSectionAnimation from "./hooks/useHeroSectionAnimation";
 import Lenis from "lenis";
+import useBackground from "./hooks/usebackground";
 
 type HeroSectionProps = {
   lenis: RefObject<Lenis | null>;
@@ -11,18 +12,21 @@ type HeroSectionProps = {
 export default function HeroSectionComponent({ lenis }: HeroSectionProps) {
   const contextRef = useRef<HTMLDivElement | null>(null);
   useHeroSectionAnimation(contextRef, lenis);
+  const bgIsActive = useBackground({ trigger: contextRef });
 
   return (
     <section ref={contextRef}>
       <div className="w-full h-[300vh] relative bg-[#000] trigger">
         <div className="sticky top-0 w-full h-screen overflow-hidden">
           <div className="w-full h-full absolute top-0 left-0 saturate-0 iridescence invert-100 scale-600">
-            <Iridescence
-              color={[1, 1, 1]}
-              mouseReact={false}
-              amplitude={0.1}
-              speed={1.0}
-            />
+            {bgIsActive && (
+              <Iridescence
+                color={[1, 1, 1]}
+                mouseReact={false}
+                amplitude={0.1}
+                speed={1.0}
+              />
+            )}
           </div>
           <div className="w-full h-screen absolute z-20 pointer-events-none init">
             <div className="w-full h-full absolute top-0 left-0 grid grid-cols-1">
