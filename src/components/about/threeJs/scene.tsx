@@ -3,7 +3,7 @@ import { RefObject, useRef } from "react";
 import SceneContent from "./sceneContent";
 import { Environment } from "@react-three/drei";
 import * as THREE from "three";
-import { EffectComposer, ToneMapping } from "@react-three/postprocessing";
+import { EffectComposer, SMAA, ToneMapping } from "@react-three/postprocessing";
 import { ToneMappingMode } from "postprocessing";
 import useAnimation from "./hooks/useAnimation";
 import useResize from "./hooks/useResize";
@@ -49,7 +49,7 @@ export default function Scene({
         outputColorSpace: THREE.SRGBColorSpace,
       }}
     >
-      {!isMobile && <fogExp2 attach="fog" args={[0xffffff, 0.01]} />}
+      {!isMobile && <fog attach="fog" args={[0xffffff, 0.01]} />}
 
       <SceneContent
         cameraPosition={cameraPosition}
@@ -68,6 +68,7 @@ export default function Scene({
       />
 
       <EffectComposer multisampling={0}>
+        <SMAA />
         <ToneMapping mode={ToneMappingMode.ACES_FILMIC} />
       </EffectComposer>
     </Canvas>

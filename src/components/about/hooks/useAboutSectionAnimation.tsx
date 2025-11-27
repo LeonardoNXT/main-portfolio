@@ -97,8 +97,11 @@ export default function useAboutSectionAnimation(
             scrub: true,
           },
         });
+        gsap.set(".slider", {
+          xPercent: -100,
+        });
         gsap.to(".slider", {
-          x: 0,
+          xPercent: 0,
           "--start": "black", // anima a cor inicial do gradiente
           "--end": "white", // anima a cor final do gradiente
           stagger: 0.01,

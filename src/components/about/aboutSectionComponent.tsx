@@ -8,10 +8,12 @@ export default function AboutSectionComponent({
   LightRaysRef,
   NoiseRef,
   setNoiseIsActive,
+  setLightRaysActive,
 }: {
   LightRaysRef: RefObject<HTMLDivElement | null>;
   NoiseRef: RefObject<HTMLDivElement | null>;
   setNoiseIsActive: Dispatch<SetStateAction<boolean>>;
+  setLightRaysActive: Dispatch<SetStateAction<boolean>>;
 }) {
   const contextRefAboutSection = useRef<HTMLDivElement | null>(null);
 
@@ -20,7 +22,7 @@ export default function AboutSectionComponent({
 
   return (
     <section ref={contextRefAboutSection}>
-      <AboutPartOne />
+      <AboutPartOne setLightRaysActive={setLightRaysActive} />
       <AboutPartTwo setNoiseIsActive={setNoiseIsActive} />
       {contextRefAboutSection.current && (
         <AboutPartThree refSection={contextRefAboutSection} />

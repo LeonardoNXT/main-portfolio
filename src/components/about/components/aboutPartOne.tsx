@@ -1,6 +1,23 @@
-export default function AboutPartOne() {
+import { Dispatch, SetStateAction, useRef } from "react";
+import useLightRays from "../hooks/useLightRays";
+
+export default function AboutPartOne({
+  setLightRaysActive,
+}: {
+  setLightRaysActive: Dispatch<SetStateAction<boolean>>;
+}) {
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  useLightRays({
+    setState: setLightRaysActive,
+    trigger: ref,
+  });
+
   return (
-    <div className="w-full h-[380vh] bg-[#000] relative aboutsection z-[10]">
+    <div
+      className="w-full h-[380vh] bg-[#000] relative aboutsection z-[10]"
+      ref={ref}
+    >
       <div className="w-full h-screen sticky top-0 left-0 flex justify-center items-center overflow-hidden">
         <div className="w-full h-screen bg-[#000000] flex justify-center items-center absolute canva-div"></div>
         <p className="text-9xl md:text-[15vw] font-canopee text-[#ffffff] opacity-0 abouttext absolute leading-[0.8]">
@@ -25,10 +42,7 @@ export default function AboutPartOne() {
               ></div>
             ))}
           </div>
-          <div
-            className="w-full h-screen bg-gradient-to-t from-[#201919] to-[#000000] flex justify-center items-center slider text-[20px]"
-            style={{ transform: "translateX(-100%)" }}
-          ></div>
+          <div className="w-full h-screen bg-gradient-to-t from-[#201919] to-[#000000] flex justify-center items-center slider text-[20px]"></div>
         </div>
       </div>
     </div>

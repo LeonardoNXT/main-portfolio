@@ -15,13 +15,14 @@ export default function HomeContent() {
   const LightRaysRef = useRef<HTMLDivElement | null>(null);
   const NoiseRef = useRef<HTMLDivElement | null>(null);
   const [noiseIsActive, setNoiseIsActive] = useState<boolean>(true);
+  const [lightRaysActive, setLightRaysActive] = useState<boolean>(true);
   useEffect(() => {
     setLenisHook(lenis);
   }, [lenis]);
 
   useEffect(() => {
-    console.log(noiseIsActive);
-  }, [noiseIsActive]);
+    console.log(lightRaysActive);
+  }, [lightRaysActive]);
 
   return (
     <main className="relative w-full h-auto">
@@ -41,18 +42,20 @@ export default function HomeContent() {
           className="absoulute w-full h-full top-0 left-0 opacity-0"
           ref={LightRaysRef}
         >
-          <LightRays
-            raysOrigin="top-center"
-            raysColor="#ffffff"
-            raysSpeed={1.5}
-            lightSpread={0.8}
-            rayLength={1.2}
-            followMouse={true}
-            mouseInfluence={0}
-            noiseAmount={0.1}
-            distortion={0.05}
-            className="custom-rays absolute top-0"
-          />
+          {lightRaysActive && (
+            <LightRays
+              raysOrigin="top-center"
+              raysColor="#ffffff"
+              raysSpeed={1.5}
+              lightSpread={0.8}
+              rayLength={1.2}
+              followMouse={true}
+              mouseInfluence={0}
+              noiseAmount={0.1}
+              distortion={0.05}
+              className="custom-rays absolute top-0"
+            />
+          )}
         </div>
       </div>
       {lenisHook && <HeroSectionComponent lenis={lenisHook} />}
@@ -60,6 +63,7 @@ export default function HomeContent() {
         LightRaysRef={LightRaysRef}
         NoiseRef={NoiseRef}
         setNoiseIsActive={setNoiseIsActive}
+        setLightRaysActive={setLightRaysActive}
       />
     </main>
   );
