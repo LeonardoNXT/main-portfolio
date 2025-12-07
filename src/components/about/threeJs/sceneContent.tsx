@@ -1,18 +1,23 @@
 import { useFrame, useThree } from "@react-three/fiber";
 import { RefObject, useEffect } from "react";
 import EnergyModel from "./energyModel";
+import { Bidimension } from "./scene";
 
 type CameraRef = RefObject<{ x: number; y: number; z: number }>;
 
 export default function SceneContent({
   isVisibleFirsh,
   cameraPosition,
+  primitiveCameraP,
+  offset,
   cameraLookAt,
   isMobile,
 }: {
   isVisibleFirsh: boolean;
   cameraPosition: CameraRef;
   cameraLookAt: CameraRef;
+  offset: Bidimension;
+  primitiveCameraP: CameraRef;
   isMobile: boolean;
 }) {
   const { camera, scene } = useThree();
@@ -23,6 +28,11 @@ export default function SceneContent({
   }, [scene]);
 
   useFrame(() => {
+    cameraPosition.current.x = primitiveCameraP.current.x - offset.x;
+    cameraPosition.current.y = primitiveCameraP.current.y - offset.y;
+    cameraPosition.current.z = primitiveCameraP.current.z;
+
+    // aplica
     camera.position.set(
       cameraPosition.current.x,
       cameraPosition.current.y,

@@ -3,14 +3,20 @@ import useLightRays from "../hooks/useLightRays";
 
 export default function AboutPartOne({
   setLightRaysActive,
+  state,
+  heightScreen,
 }: {
   setLightRaysActive: Dispatch<SetStateAction<boolean>>;
+  state: boolean;
+  heightScreen: number;
 }) {
   const ref = useRef<HTMLDivElement | null>(null);
 
   useLightRays({
+    state: state,
     setState: setLightRaysActive,
     trigger: ref,
+    heightScreen,
   });
 
   return (

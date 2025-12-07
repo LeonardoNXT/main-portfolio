@@ -12,6 +12,34 @@ type Config = {
 export function textAnimations(config : Config) {
     const CONFIG = ConfigTextObj(config.heightScreen)
 
+    const welcomeEnd = new TextSplit(".welcome-end")
+
+    if(!welcomeEnd.chars?.length) return
+
+    gsap.to(welcomeEnd.chars,{
+      opacity: 1,
+      stagger: 0.05,
+      scrollTrigger: {
+        trigger: ".mid-about-1",
+        start: `${config.heightScreen} bottom`,
+        end: `${config.heightScreen * 1.5} bottom`,
+        scrub: true,
+      }
+    })
+    gsap.to(welcomeEnd.chars,{
+      color: "#3330",
+      stagger: 0.05,
+      scrollTrigger: {
+        trigger: ".mid-about-1",
+        start: `${config.heightScreen * 2} bottom`,
+        end: `${config.heightScreen * 3} bottom`,
+        scrub: true,
+      }
+    })
+
+
+  
+
     const textIntro = new TextSplit(".text-introdution")
     textIntro.insertParagraph("inner-char")
   

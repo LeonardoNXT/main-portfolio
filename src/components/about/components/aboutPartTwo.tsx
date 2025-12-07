@@ -1,16 +1,20 @@
 import { Dispatch, SetStateAction, useRef } from "react";
 import useNoise from "../hooks/useNoise";
+import { SizeType } from "@/app/hooks/useSize";
 
 export default function AboutPartTwo({
   setNoiseIsActive,
+  size,
 }: {
   setNoiseIsActive: Dispatch<SetStateAction<boolean>>;
+  size: SizeType;
 }) {
   const ref = useRef<HTMLDivElement | null>(null);
 
   useNoise({
     setState: setNoiseIsActive,
     trigger: ref,
+    heightScreen: size.height,
   });
 
   return (

@@ -3,7 +3,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { gsap } from "gsap/gsap-core";
 
 export default function useResize() {
-  const [heightScreen, setHeightScreen] = useState<number>(window.innerHeight);
+  const [heightScreen, setHeightScreen] = useState<number>(
+    typeof window !== "undefined" ? window.innerHeight : 0
+  );
   const [isMobile, setIsMobile] = useState<boolean>(false);
 
   useEffect(() => {
@@ -12,7 +14,6 @@ export default function useResize() {
       const isMobileVarible = window.innerWidth < 768;
       setIsMobile(isMobileVarible);
       setHeightScreen(window.innerHeight);
-      ScrollTrigger.refresh();
     }
     calcIsMobile();
 
@@ -22,6 +23,8 @@ export default function useResize() {
       window.removeEventListener("resize", calcIsMobile);
     };
   }, []);
+
+  useEffect(() => console.log(heightScreen), [heightScreen]);
 
   return { isMobile, heightScreen };
 }
