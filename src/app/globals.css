@@ -127,6 +127,16 @@ body {
   overflow: hidden;
 }
 
+.percent-char{
+  opacity: 1;
+}
+.loading .line {
+  max-height: 50px;
+}
+.loading .word {
+  max-height: max-content;
+}
+
 .text-introdution .char {
   position: relative;
   overflow: hidden;

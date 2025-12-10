@@ -13,9 +13,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  abstract:
+    "Portfólio de Leonardo da Silva Leal, um Desenvolvedor Full Stack Node",
   title: "Leonardo Leal - Portifólio",
   description:
-    "Aqui eu mostro um pouco mais da minha arte e do que eu sei fazer!",
+    "Aqui eu mostro um pouco mais da minha arte e do que eu sei fazer! Sou um desenvolvedor especializado em Node Js, a qual trabalho com as tecnologias NextJS | NestJs entre outras tecnologias que integram minha stack.",
+  creator: "Leonardo Leal",
+  applicationName: "Portfólio de Leonardo Leal",
 };
 
 export default function RootLayout({

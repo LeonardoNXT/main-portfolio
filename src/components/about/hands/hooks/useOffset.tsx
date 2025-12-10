@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, useEffect } from "react";
-import { Bidimension } from "../scene";
+import { Bidimension } from "./useContentAnimation";
 
 export default function useOffset(
   setOffset: Dispatch<SetStateAction<Bidimension>>

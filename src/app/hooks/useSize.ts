@@ -21,10 +21,14 @@ export default function useSize(){
         
         // Chama imediatamente para garantir valor correto
         calcSize()
-        
+
+        document.addEventListener("fullscreenchange", calcSize)
         window.addEventListener("resize", calcSize)
 
-        return () => window.removeEventListener("resize", calcSize)
+        return () => {
+            window.removeEventListener("resize", calcSize)
+            document.removeEventListener("fullscreenchange", calcSize)
+        }
     }, [])
 
     return size

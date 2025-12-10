@@ -1,11 +1,24 @@
 import * as THREE from "three";
-import { useEffect } from "react";
+import { RefObject, useEffect } from "react";
 import { useGLTF } from "@react-three/drei";
+import { ThreeDimension } from "./hooks/useContentAnimation";
+import { useFrame } from "@react-three/fiber";
 
-export default function EnergyModel() {
+export default function EnergyModel({
+  modelRotation,
+}: {
+  modelRotation: RefObject<ThreeDimension>;
+}) {
   const { scene } = useGLTF("/teste3.glb");
-  scene.position.set(0, 0, 0); // X=1, Y=2, Z=3
-  scene.rotation.set(0, 0, 0);
+
+  useFrame(() => {
+    scene.rotation.set(
+      modelRotation.current.x,
+      modelRotation.current.y,
+      modelRotation.current.z
+    ); // X=1, Y=2, Z=3
+  });
+
   useEffect(() => {
     scene.traverse((child) => {
       if (child instanceof THREE.Mesh) {

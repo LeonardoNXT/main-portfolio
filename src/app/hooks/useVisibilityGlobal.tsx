@@ -16,11 +16,9 @@ export default function useVisibilityGlobal(config: Config) {
         -1;
 
       if (visibility > config.start && visibility < config.end) {
-        console.log(true);
         setIsVisible(true);
       } else {
         setIsVisible(false);
-        console.log(false);
       }
     }
 

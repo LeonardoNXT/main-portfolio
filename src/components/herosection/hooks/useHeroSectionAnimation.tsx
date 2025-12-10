@@ -1,9 +1,10 @@
 import SplitType from "split-type";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { RefObject } from "react";
+import { RefObject, useState } from "react";
 import Lenis from "lenis";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import TextSplit from "@/components/about/hands/hooks/helpers/spliTextHelper";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,6 +13,7 @@ const defaultHeroSectionConfig = {
     toFirst: {
       opacity: 1,
       duration: 1,
+      delay: 3.5,
     },
     toEnd: {
       opacity: 0,
@@ -111,10 +113,14 @@ const defaultHeroSectionConfig = {
 export default function useHeroSectionAnimation(
   contextRef: RefObject<HTMLDivElement | null>,
   lenisRef: RefObject<Lenis | null>,
+  noiseRef: RefObject<HTMLDivElement | null>,
+  loading: RefObject<{ progress: number }>,
   config = defaultHeroSectionConfig
 ) {
+  const [progress, setProgress] = useState<number>(0);
   useGSAP(
     (context) => {
+      if (!context.selector) return;
       ScrollTrigger.refresh();
       const nameElement = context?.selector?.(".name");
       if (nameElement) {
@@ -132,6 +138,10 @@ export default function useHeroSectionAnimation(
 
         context.add(() => {
           // GSAP SET
+
+          gsap.set(noiseRef.current, {
+            opacity: 0,
+          });
           gsap.set(".name", {
             opacity: 1,
           });
@@ -145,6 +155,50 @@ export default function useHeroSectionAnimation(
 
           // GSAP TIMELINE
           const tl = gsap.timeline();
+
+          gsap.to(loading.current, {
+            onUpdate: function (this: gsap.core.Tween) {
+              const percent = Number((this.progress() * 100).toFixed(0));
+              setProgress(percent);
+
+              if (percent == 100) {
+                setTimeout(() => {
+                  const percentText = new TextSplit(".loading");
+                  percentText.insertParagraph("percent-char");
+
+                  gsap.set(percentText.chars, {
+                    opacity: 1,
+                    lineHeight: 1,
+                    overflow: "hidden",
+                  });
+
+                  const percentChars = context?.selector?.(".percent-char");
+                  const percentTag = context?.selector?.(".percentTag")[0];
+
+                  if (!percentChars || !percentTag)
+                    return console.error("Está faltando algo.");
+
+                  const percentCharsAll = [...percentChars, percentTag];
+
+                  gsap.to(percentCharsAll, {
+                    opacity: 0,
+                    stagger: 0.05,
+                    ease: "power3.inOut",
+                    duration: 1,
+                    delay: 0.3,
+                  });
+                }, 1);
+              }
+            },
+            duration: 1,
+            delay: 1,
+          });
+
+          gsap.to(noiseRef.current, {
+            opacity: 1,
+            duration: 1,
+            delay: 3.5,
+          });
 
           tl.to(".logo-leonardo", {
             ...config.logo.toFirst,
@@ -202,6 +256,8 @@ export default function useHeroSectionAnimation(
     },
     { scope: contextRef }
   );
+
+  return progress;
 }
 
 // Introdução / ligação à nova função.
@@ -210,7 +266,6 @@ const afterNameSplited = (
   lastChange: HTMLElement[] | null,
   config = defaultHeroSectionConfig
 ) => {
-  const ScreenHeight = window.innerHeight;
   gsap.to(lastChange, {
     ...config.nameSplit.toScrollTriggerSettings,
   });

@@ -50,17 +50,6 @@ export default function useAboutSectionAnimation(
           },
         });
 
-        gsap.to(LightRaysRef.current, {
-          opacity: 1,
-          scrollTrigger: {
-            trigger: ".aboutsection",
-            start: `top bottom`,
-            end: `${heightScreen} top`,
-            scrub: true,
-            invalidateOnRefresh: true,
-          },
-        });
-
         textTimeline
           .to(aboutTextSeparated, {
             opacity: 1,
@@ -91,10 +80,8 @@ export default function useAboutSectionAnimation(
           },
         });
 
-        const gridLines = context?.selector?.(".grid-lines")[0];
-
         gsap.to(".grid-lines", {
-          y: `-${gridLines.getBoundingClientRect().height}px`,
+          y: `-100%`,
           stagger: 0.01,
           scrollTrigger: {
             trigger: ".aboutsection",
@@ -106,7 +93,7 @@ export default function useAboutSectionAnimation(
         });
 
         gsap.to(".grid-lines-1", {
-          y: `${gridLines.getBoundingClientRect().height}px`,
+          y: `100%`,
           stagger: 0.01,
           scrollTrigger: {
             trigger: ".aboutsection",
@@ -138,7 +125,22 @@ export default function useAboutSectionAnimation(
           },
         });
 
-        gsap.to(LightRaysRef.current, {
+        const tl = gsap.timeline();
+
+        // Fade in
+        tl.to(LightRaysRef.current, {
+          opacity: 1,
+          scrollTrigger: {
+            trigger: ".aboutsection",
+            start: "top bottom",
+            end: `${heightScreen} top`,
+            scrub: true,
+            invalidateOnRefresh: true,
+          },
+        });
+
+        // Fade out
+        tl.to(LightRaysRef.current, {
           opacity: 0,
           scrollTrigger: {
             trigger: ".aboutsection",
@@ -339,8 +341,8 @@ export default function useAboutSectionAnimation(
     },
     {
       scope: contextRef,
-      dependencies: [size],
-      revertOnUpdate: true, // CRÍTICO: limpa animações antigas antes de criar novas
+      dependencies: [size.height, size.width],
+      revertOnUpdate: true,
     }
   );
 }

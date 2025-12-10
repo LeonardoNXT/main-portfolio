@@ -58,7 +58,9 @@ export default function HomeContent() {
           )}
         </div>
       </div>
-      {lenisHook && <HeroSectionComponent lenis={lenisHook} />}
+      {lenisHook && (
+        <HeroSectionComponent lenis={lenisHook} noiseRef={NoiseRef} />
+      )}
       <AboutSectionComponent
         lightRaysActive={lightRaysActive}
         LightRaysRef={LightRaysRef}

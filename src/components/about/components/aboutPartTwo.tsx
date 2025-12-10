@@ -57,7 +57,7 @@ export default function AboutPartTwo({
                 className="absolute rotate-90"
               >
                 <circle
-                  className="circle "
+                  className="circle"
                   cx="100"
                   cy="100"
                   r="40"

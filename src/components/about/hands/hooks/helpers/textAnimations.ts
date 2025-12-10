@@ -27,7 +27,7 @@ export function textAnimations(config : Config) {
       }
     })
     gsap.to(welcomeEnd.chars,{
-      color: "#3330",
+      color: "#FFF0",
       stagger: 0.05,
       scrollTrigger: {
         trigger: ".mid-about-1",

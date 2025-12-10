@@ -1,23 +1,26 @@
 import { Dispatch, SetStateAction, useRef } from "react";
 import useLightRays from "../hooks/useLightRays";
+import { SizeType } from "@/app/hooks/useSize";
 
 export default function AboutPartOne({
   setLightRaysActive,
   state,
-  heightScreen,
+  size,
 }: {
   setLightRaysActive: Dispatch<SetStateAction<boolean>>;
   state: boolean;
-  heightScreen: number;
+  size: SizeType;
 }) {
   const ref = useRef<HTMLDivElement | null>(null);
 
-  useLightRays({
-    state: state,
-    setState: setLightRaysActive,
-    trigger: ref,
-    heightScreen,
-  });
+  useLightRays(
+    {
+      state: state,
+      setState: setLightRaysActive,
+      trigger: ref,
+    },
+    size
+  );
 
   return (
     <div

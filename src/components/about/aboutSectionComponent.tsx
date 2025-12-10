@@ -35,7 +35,7 @@ export default function AboutSectionComponent({
       <AboutPartOne
         setLightRaysActive={setLightRaysActive}
         state={lightRaysActive}
-        heightScreen={size.height}
+        size={size}
       />
       <AboutPartTwo setNoiseIsActive={setNoiseIsActive} size={size} />
       {contextRefAboutSection.current && (

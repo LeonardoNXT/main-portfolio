@@ -24,7 +24,5 @@ export default function useResize() {
     };
   }, []);
 
-  useEffect(() => console.log(heightScreen), [heightScreen]);
-
   return { isMobile, heightScreen };
 }
