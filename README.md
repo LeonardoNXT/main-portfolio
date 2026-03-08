@@ -8,7 +8,7 @@ Instead of a static showcase, this portfolio explores **interactive storytelling
 
 ---
 
-# ✨ Features
+# Features
 
 - Interactive and immersive UI
 - Real-time 3D rendering in the browser
@@ -21,7 +21,7 @@ Instead of a static showcase, this portfolio explores **interactive storytelling
 
 ---
 
-# 🧠 Architecture
+# Architecture
 
 The project follows a **component-driven architecture** using modern React patterns and focuses on maintaining clear separation between visual layers, interaction systems, and rendering logic.
 
@@ -37,7 +37,7 @@ This approach ensures the project remains scalable while allowing experimentatio
 
 ---
 
-# 🚀 Tech Stack
+# Tech Stack
 
 ### Core Framework
 
@@ -67,7 +67,7 @@ This approach ensures the project remains scalable while allowing experimentatio
 
 ---
 
-# 🎯 Purpose
+# Purpose
 
 This portfolio serves multiple purposes:
 
@@ -81,7 +81,7 @@ It acts both as a **presentation platform** and a **technical playground** for e
 
 ---
 
-# ⚡ Performance
+# Performance
 
 Special attention is given to performance optimization, including:
 
@@ -123,7 +123,7 @@ npm start
 
 ---
 
-# 📁 Project Goal
+# Project Goal
 
 The long-term goal of this project is to evolve into a **fully interactive developer portfolio**, blending:
 
@@ -136,6 +136,6 @@ while maintaining performance and scalability.
 
 ---
 
-# 📜 License
+# License
 
 This project is open for inspiration and educational purposes.
