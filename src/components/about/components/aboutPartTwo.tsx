@@ -85,7 +85,7 @@ export default function AboutPartTwo({
             </div>
           </div>
 
-          <div className=" flex justify-center items-center w-screen h-screen absolute overflow-hidden">
+          <div className="flex justify-center items-center w-screen h-screen absolute overflow-hidden">
             <div className="absolute w-0 aspect-square bg-[#0a0a0a] rounded-full circle-fill z-10"></div>
             <div className="absolute w-0 aspect-square bg-[#030303] rounded-full circle-fill z-10"></div>
             <div className="absolute w-0 aspect-square bg-[#000] rounded-full circle-fill circle-transition z-10"></div>

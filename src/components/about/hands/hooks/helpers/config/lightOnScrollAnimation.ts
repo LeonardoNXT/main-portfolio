@@ -25,13 +25,6 @@ export function lightOnScrollAnimation(config : Param){
     circle.style.strokeDasharray = String(lengthCircle)
     circle.style.strokeDashoffset = String(lengthCircle)
 
-    //config linhas 
-
-    const lines = config.context.selector(".path-lines")[0] as SVGPathElement
-    const lengthLines = lines.getTotalLength()
-    lines.style.strokeDasharray = String(lengthLines)
-    lines.style.strokeDashoffset = String(lengthLines)
-
     // começo das animações
 
     // configuração inicial do circulo
@@ -51,19 +44,25 @@ export function lightOnScrollAnimation(config : Param){
         }
     })
 
-    // configuração inicial das linhas que tangem o circulo
-    gsap.set(lines, {
-        opacity:0,
-    })
+    // configuração inicial das linhas horizontais/verticais
 
-    gsap.to(lines, {
-        opacity: 1,
-        strokeDashoffset: 0,
-        ease: "circ.inOut",
+    gsap.to(".line-width",{
+        width: "100%",
+                ease:"circ.inOut",
         scrollTrigger: {
             trigger: ".mid-about-1",
-            start: `${config.heightScreen *  11} bottom`,
-            end: `${config.heightScreen * 13} bottom`,
+            start: `${config.heightScreen *  11.5} bottom`,
+            end: `${config.heightScreen * 12.5} bottom`,
+            scrub:true,
+        }
+    })
+    gsap.to(".line-height",{
+        height: "100%",
+        ease:"circ.inOut",
+        scrollTrigger: {
+            trigger: ".mid-about-1",
+            start: `${config.heightScreen *  11.5} bottom`,
+            end: `${config.heightScreen * 12.5} bottom`,
             scrub:true,
         }
     })

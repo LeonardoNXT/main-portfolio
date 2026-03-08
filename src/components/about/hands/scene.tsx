@@ -56,6 +56,7 @@ export default function Scene({
     <Canvas
       style={{ zIndex: zIndex }}
       camera={{ fov: 30, near: 0.1, far: 100, position: [10, 0, 10] }}
+      className="pointer-events-none"
       shadows
       dpr={Math.min(window.devicePixelRatio, 1)}
       gl={{

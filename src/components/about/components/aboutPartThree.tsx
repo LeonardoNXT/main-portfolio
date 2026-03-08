@@ -14,6 +14,7 @@ export default function AboutPartThree({
   const { heightScreen, isMobile } = useResize();
   const position = useRef<Bidimension>({ x: 0, y: 0 });
   const diametro = heightScreen * 0.7;
+  const widthCard = (window.innerWidth - diametro) / 2;
   const raio = diametro / 2;
 
   useEffect(() => {
@@ -61,14 +62,14 @@ export default function AboutPartThree({
               experiência final.
             </p>
           </div>
-          <p className="absolute top-1/2 left-1/2 translate-[-50%] font-canopee text-[5vw] text-nowrap z-5 text-[#333W] welcome-end">
+          <p className="absolute top-1/2 left-1/2 translate-[-50%] font-canopee text-[5vw] text-nowrap z-5 text-[#333] welcome-end">
             — E esta é a minha história. —
           </p>
 
           <div className="w-screen h-full absolute z-10 top-0 left-0 overflow-hidden">
             <div className="absolute top-1/2 left-1/2 translate-[-50%] rounded-full w-[0]  aspect-square bg-[#000000] z-20 circle-increase"></div>
             <div className="absolute top-1/2 left-1/2 translate-[-50%] rounded-full w-[0]  aspect-square bg-[#0e0e0e] z-20 circle-increase"></div>
-            <div className="absolute top-1/2 left-1/2 translate-[-50%] rounded-full w-[0]  aspect-square bg-[#0a0a0a] z-20 circle-increase"></div>
+            <div className="absolute top-1/2 left-1/2 translate-[-50%] rounded-full w-[0]  aspect-square bg-[#0c0c0c] z-20 circle-increase"></div>
             <svg
               viewBox="0 0 200 200"
               className="absolute top-1/2 left-1/2 translate-[-50%] z-30 rotate-[-45deg] w-full h-full"
@@ -83,33 +84,35 @@ export default function AboutPartThree({
                 fill="none"
               />
             </svg>
-            <svg
-              width="100"
-              height="100"
-              viewBox="0 0 100 100"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="absolute z-20 overflow-visible"
-              style={{
-                transform: "translate(0, -50%)",
 
-                top: `calc(50% - ${position.current.y}px)`,
-                left: `calc(50% + ${position.current.x}px)`,
+            <div
+              className="absolute w-0 left-1/2 h-[1px] translate-x-[-50%]  bg-[#222] z-20 line-width"
+              style={{
+                top: `calc(50% - ${raio}px)`,
               }}
-            >
-              <path
-                className="path-lines"
-                d="M 0 50 L 30 20 L 100 20"
-                stroke="#222"
-                strokeWidth="1"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            ></div>
+            <div
+              className="absolute w-0 left-1/2 h-[1px] translate-x-[-50%]  bg-[#222] z-20 line-width"
+              style={{
+                top: `calc(50% + ${raio}px)`,
+              }}
+            ></div>
+            <div
+              className="absolute w-[1px] h-0 top-1/2 translate-y-[-50%]  bg-[#222] z-20 line-height"
+              style={{
+                left: `calc(50% + ${raio}px)`,
+              }}
+            ></div>
+            <div
+              className="absolute w-[1px] h-0 top-1/2 translate-y-[-50%]  bg-[#222] z-20 line-height"
+              style={{
+                left: `calc(50% - ${raio}px)`,
+              }}
+            ></div>
           </div>
         </div>
       </div>
-      <div className="w-full h-screen bg-[#1b1b1b]">dsadsadsadsdsadsad</div>
+      <div className="w-full h-screen bg-[#0c0c0c]">dsadsadsadsdsadsad</div>
     </div>
   );
 }
