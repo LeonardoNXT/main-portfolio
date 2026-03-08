@@ -100,27 +100,25 @@ These techniques ensure the experience remains fluid even when rendering complex
 Install dependencies:
 
 ```bash
-pnpm install
+npm install
 ```
-
-````
 
 Start the development server:
 
 ```bash
-pnpm dev
+npm dev
 ```
 
 Build the project:
 
 ```bash
-pnpm build
+npm build
 ```
 
 Start the production server:
 
 ```bash
-pnpm start
+npm start
 ```
 
 ---
@@ -141,5 +139,3 @@ while maintaining performance and scalability.
 # 📜 License
 
 This project is open for inspiration and educational purposes.
-
-````
